@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gugi&family=Merriweather+Sans&family=Monofett&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gugi&family=Merriweather+Sans&family=Righteous&display=swap');
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+.container h1{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Gugi',Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 3.5em;
+    color: #00bb56;
+    margin-right: 40px;
+    transition: .4s;
+    text-shadow: 5px 5px #000;
+}
+.container svg{
+    font-size: 3.5em;
+    color: #00bb56;
+    transition: .4s;
+
+}
+.container svg:hover{
+    transform: translate(-3px, -5px);
+}
+
+.container h1:hover{
+    color: #02ff6b;
+}
+.section_user{
+    display: flex;
+    flex-direction: column;
+    background-color: #01001b;
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.section_user h2{
+    font-family: 'Righteous', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 35px;
+    text-align: center;
+    color: #00bb56;
+}
+.section_user span{
+    font-size: 20px;
+    padding: 6px;
+}
+.section_user input{
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    background-color: #04013b;
+
+}
+.section_user p{
+    padding: 10px;
+    color: #00bb56;
+    text-align: center;
+}
