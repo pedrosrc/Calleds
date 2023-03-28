@@ -1,5 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *{
   margin: 0;
   padding: 0;
   color: #fff;
+}
+.text-indigo-600{
+  color: #00bb56;
+}
+.bg-indigo-600{
+  background-color: #00bb56;
+}
+.hover\:bg-indigo-500:hover{
+  background-color: transparent;
+  border: 1px solid #00bb56;
 }

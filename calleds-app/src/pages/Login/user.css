@@ -69,15 +69,19 @@
     text-align: center;
     font-family: 'Kanit', Arial, Helvetica, sans-serif;
 }
+.section_user a:hover{
+    color: #05ff7a;
+}
 .section_user button{
     padding: 6px;
     margin-top: 15px;
+    border: 1px solid #00bb56;
     background-color: #00bb56;
-    border: none;
     font-family: 'Kanit', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     cursor: pointer;
     transition: .3s;
+    color: #000;
 }
 .section_user button:hover{
     background-color: transparent;
