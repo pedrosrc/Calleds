@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gugi&family=Merriweather+Sans&family=Righteous&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gugi&family=Kanit&family=Merriweather+Sans&family=Righteous&display=swap');
+
 .container{
     display: flex;
     justify-content: center;
@@ -51,6 +53,7 @@
 .section_user span{
     font-size: 20px;
     padding: 6px;
+    font-family: 'Kanit', Arial, Helvetica, sans-serif;
 }
 .section_user input{
     padding: 6px;
@@ -59,8 +62,25 @@
     background-color: #04013b;
 
 }
-.section_user p{
+.section_user a{
+    text-decoration: none;
     padding: 10px;
     color: #00bb56;
     text-align: center;
+    font-family: 'Kanit', Arial, Helvetica, sans-serif;
+}
+.section_user button{
+    padding: 6px;
+    margin-top: 15px;
+    background-color: #00bb56;
+    border: none;
+    font-family: 'Kanit', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s;
+}
+.section_user button:hover{
+    background-color: transparent;
+    border: 1px solid #00bb56;
+    color: #00bb56;
 }
