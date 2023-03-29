@@ -1,10 +1,13 @@
 import './App.css'
 import Nav from './components/Nav/Nav'
+import AuthProvider from './contexts/auth'
 
 function App() {
-  return(
+  return (
     <div>
-      <Nav/>
+      <AuthProvider>
+        <Nav />
+      </AuthProvider> 
     </div>
   )
 }

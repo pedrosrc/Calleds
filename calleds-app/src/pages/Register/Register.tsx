@@ -1,5 +1,4 @@
 import '../Login/user.css'
-import { MouseEvent } from 'react'
 import { IoMdPaper} from 'react-icons/io'
 import {Link, useNavigate} from 'react-router-dom'
 import { auth } from '../../services/firebaseConnection'

@@ -1,5 +1,6 @@
-import { useState, useEffect, PropsWithChildren } from "react";
+import { useState, useEffect} from "react";
 import { Navigate } from "react-router-dom";
+
 import { auth } from "../../services/firebaseConnection";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -16,7 +17,8 @@ export default function Privade({children}: any){
                         uid: user.uid,
                         email: user.email
                     }
-                    localStorage.setItem('@data_user',  JSON.stringify(userData))
+                    localStorage.setItem('@data_user',  JSON.stringify(userData));
+
                     setLoading(false)
                     setSigned(true)
                 }else{
@@ -27,8 +29,11 @@ export default function Privade({children}: any){
         }
         checkLogin();
     },[])    
+
     if(loading){
-        <div>Loading...</div>
+        return(
+            <div>Loading...</div>
+        )     
     }else if(!signed){
         return<Navigate to="/"/>
     }
