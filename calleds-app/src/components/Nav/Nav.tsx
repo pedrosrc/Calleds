@@ -7,17 +7,13 @@ import NotFound from "../../pages/NotFound"
 
 export default function Nav() {
     return (
-        <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Login/>}/>
-                    <Route path="/register" element={<Register/>}/>
-                    <Route path="/home" element={ <Privade> <Home/> </Privade> }/>
+        <Routes>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/home" element={ <Privade> <Home/> </Privade> }/>
                     
-                    <Route path="*" element={<NotFound/>} />
-                </Routes>
-            </BrowserRouter>
-
-        </div>
+            <Route path="*" element={<NotFound/>} />
+        </Routes>               
+   
     )
 }

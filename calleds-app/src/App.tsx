@@ -1,14 +1,17 @@
 import './App.css'
 import Nav from './components/Nav/Nav'
 import AuthProvider from './contexts/auth'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
+
+    <BrowserRouter>
       <AuthProvider>
         <Nav />
-      </AuthProvider> 
-    </div>
+      </AuthProvider>
+    </BrowserRouter>
+
   )
 }
 
