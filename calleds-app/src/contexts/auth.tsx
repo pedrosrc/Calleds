@@ -16,7 +16,7 @@ function AuthProvider({children}: any){
 
     useEffect(()=>{
         async function loadUser() {
-            const storageUser = localStorage.getItem('@data_user')
+            const storageUser = localStorage.getItem('@dataCalled')
 
             if(storageUser){
                 setUser(JSON.parse(storageUser))
@@ -41,7 +41,8 @@ function AuthProvider({children}: any){
                 nome: name, 
                 avatarUrl: null
             })
-            .then(() => {
+            .then( () => {
+
                 let data = {
                     uid: uid,
                     nome: name,
@@ -79,7 +80,6 @@ function AuthProvider({children}: any){
                 avatarUrl: docSnap.data()?.avatarUrl
             }
             setUser(data);
-
             storageUser(data);
             setLoadingAuth(false);
             navigate("/home")
@@ -92,13 +92,13 @@ function AuthProvider({children}: any){
     }
 
     function storageUser(data: any){
-        localStorage.setItem('@data_user', JSON.stringify(data))
+        localStorage.setItem('@dataCalled', JSON.stringify(data))
     }
 
     //LOGOUT DE USER
     async function logout() {
         await signOut(auth);
-        localStorage.removeItem('@data_user')
+        localStorage.removeItem('@dataCalled')
         setUser(null);
     }
     
