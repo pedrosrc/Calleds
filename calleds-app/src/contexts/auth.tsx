@@ -3,6 +3,7 @@ import { auth, db } from "../services/firebaseConnection";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDoc, setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
 
 export const AuthContext = createContext({});
 
@@ -11,6 +12,7 @@ function AuthProvider({children}: any){
     const [user, setUser] = useState<any>(null)
     const [loadingAuth, setLoadingAuth] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
+   
 
     const navigate = useNavigate();
 
@@ -27,7 +29,7 @@ function AuthProvider({children}: any){
         }
         loadUser();
     }, [])
-
+    
     //CADASTRO DE USER NOVO
     async function signUp(email: string, password:string, name: string){
         
@@ -53,12 +55,14 @@ function AuthProvider({children}: any){
                 setUser(data);
                 storageUser(data);
                 setLoadingAuth(false);
+                toast.success('Cadastro feito com sucesso')
                 navigate("/")
             })
             
         })
         .catch((error)=>{
             console.log(error);
+            alert('Digite seus dados corretamente!')
             setLoadingAuth(false);
         })
     }
@@ -82,11 +86,13 @@ function AuthProvider({children}: any){
             setUser(data);
             storageUser(data);
             setLoadingAuth(false);
+            toast.success('Login feito com sucesso!')
             navigate("/home")
         })
         .catch((error)=>{
             console.log(error)
             setLoadingAuth(false);
+            toast.error('Email/Senha está incorreta!')
         })
         
     }

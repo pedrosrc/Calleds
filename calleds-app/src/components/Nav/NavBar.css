@@ -18,19 +18,21 @@
 }
 .menu_item{
     height: 57px;
-    width: 16em;
+   
     display: flex;
     color: #fff;
     margin: auto 20px;
     border-radius: 10px;
     position: relative;
+    
     align-items: center;
+    
 }
 .menu_item_NX{
     width: 4rem;
 }
 .menu_item:hover{
-    background-color: #ffffff52;
+    background-color: #ffffff15;
 }
 .menu_item svg{
     margin: 0 10px;   
@@ -61,8 +63,9 @@
     display: flex;
 }
 .image_profile img{
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    text-align: center;
+    height: 90px;
 }
 .list_nav{
     position: absolute;

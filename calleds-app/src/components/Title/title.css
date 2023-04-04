@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gugi&family=Kanit&family=Merriweather+Sans&family=Righteous&display=swap');
+
+.title{
+    display: flex;
+    align-items: center;    
+    flex-direction: row;
+    margin: 50px;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+.title h1{
+    color:#fff;
+    font-family: 'Righteous';
+}

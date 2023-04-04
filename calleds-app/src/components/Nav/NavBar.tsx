@@ -7,11 +7,7 @@ import { RiFileList3Line } from 'react-icons/ri'
 import { FiUsers } from 'react-icons/fi'
 import { AiOutlineSetting } from 'react-icons/ai'
 import { TbDoorExit } from 'react-icons/tb'
-import { HiMenu } from 'react-icons/hi'
-import { IoClose } from 'react-icons/io5'
 import './NavBar.css'
-
-
 
 export default function NavBar() {
 
@@ -20,7 +16,7 @@ export default function NavBar() {
   const { logout }: any = useContext(AuthContext);
 
   const [isExpended, setIsExpended] = useState<boolean>(false);
-
+  
   async function handleLogout() {
     await logout();
   }
@@ -30,7 +26,7 @@ export default function NavBar() {
       <div className="nav_upper">
         <div className="nav_heading">
           {isExpended && (<div className='image_profile'>
-            <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} />
+            <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} /> <span>Name</span>
           </div>)}
           <button className={isExpended ? 'list_nav list_nav_in' : 'list_nav list_nav_out'} onClick={() => setIsExpended(!isExpended)} >
             <span></span>
@@ -48,14 +44,14 @@ export default function NavBar() {
           {!isExpended && <div className="tooltip"><p>Clientes</p></div>}
           </Link>
 
-          <Link to='/settings' className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <AiOutlineSetting /> {isExpended && <p>Configurações</p>}
+          <Link to='/perfil' className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <AiOutlineSetting /> {isExpended && <p>Configurações</p>}
           {!isExpended && <div className="tooltip"><p>Configurações</p></div>} 
           </Link>
 
 
         </div>
 
-        <button onClick={handleLogout} className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <TbDoorExit /> {isExpended && <p>Sair</p>} </button>
+        <button onClick={handleLogout} className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <TbDoorExit /> {isExpended && <p>Sair</p>} {!isExpended && <div className="tooltip"><p>Sair</p></div>} </button>
       </div>
 
 
