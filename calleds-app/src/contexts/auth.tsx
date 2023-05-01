@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 import { auth, db } from "../services/firebaseConnection";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getDoc, setDoc, doc } from "firebase/firestore";
+import { getDoc, setDoc, doc, addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'
 
@@ -52,7 +52,7 @@ function AuthProvider({children}: any){
                     avatarUrl: null
                 };
 
-                setUser(data);
+                setUser(data); 
                 storageUser(data);
                 setLoadingAuth(false);
                 toast.success('Cadastro feito com sucesso')
@@ -96,6 +96,21 @@ function AuthProvider({children}: any){
         })
         
     }
+    //Adicionando CLiente
+    async function addCliente(nomeCliente:string, numberCliente:number[], emailCliente:string){
+        await addDoc(collection(db, 'users', user.uid, 'clientes'), {
+            NomeCliente: nomeCliente,
+            NumeroCliente: numberCliente,
+            EmailCliente: emailCliente
+        })
+        .then(()=>{
+            toast.success('Cliente Adicionado')
+        })
+        .catch((error)=>{
+            toast.error('Algo deu errado!')
+            console.log(error)
+        })
+    }
 
     function storageUser(data: any){
         localStorage.setItem('@dataCalled', JSON.stringify(data))
@@ -114,6 +129,9 @@ function AuthProvider({children}: any){
             signIn,
             signUp,
             logout,
+            storageUser,
+            setUser,
+            addCliente,
             loadingAuth,
             loading}}>
             {children}

@@ -1,13 +1,18 @@
 .container_profile{
     display: flex;
     flex-direction: row;
+    background-color: #e1d7e1;
+    
 }
 .container_user{
     display: flex;
-    margin: 45px;
+    justify-content: center;
+    margin-left: 45px;
     background-color: #1f1f1f;
+    background-color: #f0e6f0;
     border-radius: 5px;
     padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .avatar_label{
     display: flex;
@@ -31,11 +36,13 @@
 }
 .form_profile{
     display: flex;
+    flex-direction: column;
 }
 .form_profile h1{
-
+    color: #000;
     text-align: center;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .form_profile img{
     margin-bottom: 1em;
@@ -50,25 +57,56 @@
     margin: 20px;
 }
 .info_user label{
-    background-color: #000;
+    display: flex;
     width: 200px;
     padding: 5px;
     text-align: center;
+    color: #000;
     border-radius: 5px 5px 0 0;
 }
 .info_user input{
-    border-radius:0 0  5px 5px;
+    border-radius: 10px;
     padding: 5px;
     width: 200px;
     margin-bottom: 20px;
+    border: 1px solid #00bb56;
+    color: #000;
     
 }
+.info_user input:disabled{
+    cursor: no-drop;
+    background-color: #b8b0b8ad;
+}
 .info_user button{
-    background-color: green;
+    background-color: #00bb56;
     padding: 5px 10px;
     margin-top: 10px;
-    border-radius: 10px;
+    width: 100%;
+    transition: .4s;
 }
+.info_user button:hover{
+    border-radius: 10px;
+    color: #000;
+}
+.article_clients{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: #f0e6f0;
+    background-color: #04013b;
+    border-radius: 5px;
+    height: 250px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    flex-direction: column;
+}
+.article_clients span{
+    margin: auto;
+}
+.article_clients h1{
+    color: #fff;
+}
+
 @media screen and (max-width: 700px) {
     .form_profile{
         flex-direction: column;

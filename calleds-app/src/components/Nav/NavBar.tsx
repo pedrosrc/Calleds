@@ -12,11 +12,13 @@ import './NavBar.css'
 export default function NavBar() {
 
 
-  const { user }: any = useContext(AuthContext);
+  const { user, setUser, localStorage }: any = useContext(AuthContext);
   const { logout }: any = useContext(AuthContext);
 
+  const [name, setName] = useState<any>(user && user.nome)
+
   const [isExpended, setIsExpended] = useState<boolean>(false);
-  
+
   async function handleLogout() {
     await logout();
   }
@@ -25,8 +27,10 @@ export default function NavBar() {
     <div className={isExpended ? 'sidebar' : 'sidebar sidebar_NX'}>
       <div className="nav_upper">
         <div className="nav_heading">
-          {isExpended && (<div className='image_profile'>
-            <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} /> <span>Name</span>
+          {isExpended && (
+          <div className='image_profile'>
+            <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} /> 
+            <span>{name}</span>
           </div>)}
           <button className={isExpended ? 'list_nav list_nav_in' : 'list_nav list_nav_out'} onClick={() => setIsExpended(!isExpended)} >
             <span></span>
@@ -36,16 +40,16 @@ export default function NavBar() {
         </div>
         <div className='nav'>
 
-          <Link to='/home' className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <RiFileList3Line /> {isExpended && <p>Chamados</p>} 
-          {!isExpended && <div className="tooltip"><p>Chamados</p></div>}
+          <Link to='/home' className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <RiFileList3Line /> {isExpended && <p>Chamados</p>}
+            {!isExpended && <div className="tooltip"><p>Chamados</p></div>}
           </Link>
 
-          <Link to="/clientes" className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <FiUsers /> {isExpended && <p>Clientes</p>} 
-          {!isExpended && <div className="tooltip"><p>Clientes</p></div>}
+          <Link to="/clientes" className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <FiUsers /> {isExpended && <p>Clientes</p>}
+            {!isExpended && <div className="tooltip"><p>Clientes</p></div>}
           </Link>
 
           <Link to='/perfil' className={isExpended ? 'menu_item' : 'menu_item menu_item_NX'}> <AiOutlineSetting /> {isExpended && <p>Configurações</p>}
-          {!isExpended && <div className="tooltip"><p>Configurações</p></div>} 
+            {!isExpended && <div className="tooltip"><p>Configurações</p></div>}
           </Link>
 
 
