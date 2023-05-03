@@ -88,13 +88,21 @@
     border-radius: 10px;
     color: #000;
 }
+.section_clients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
 .article_clients{
     display: flex;
     justify-content: center;
-    margin: auto;
+    margin: auto 15px;
     background-color: #f0e6f0;
     background-color: #04013b;
     border-radius: 5px;
+    width: 250px;
     height: 250px;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -105,6 +113,14 @@
 }
 .article_clients h1{
     color: #fff;
+}
+.buttons_edit{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.buttons_edit button{
+    margin: 0 15px;
 }
 
 @media screen and (max-width: 700px) {

@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 import { auth, db } from "../services/firebaseConnection";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getDoc, setDoc, doc, addDoc, collection } from "firebase/firestore";
+import { getDoc, setDoc, doc, addDoc, collection, deleteDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'
 
@@ -111,6 +111,11 @@ function AuthProvider({children}: any){
             console.log(error)
         })
     }
+    //Excluindo Cliente
+    async function deleteCliente(id: any){
+        const clienteRef = doc(db, 'users', user.uid, 'clientes', id)
+        await deleteDoc(clienteRef)
+    }
 
     function storageUser(data: any){
         localStorage.setItem('@dataCalled', JSON.stringify(data))
@@ -132,6 +137,7 @@ function AuthProvider({children}: any){
             storageUser,
             setUser,
             addCliente,
+            deleteCliente,
             loadingAuth,
             loading}}>
             {children}

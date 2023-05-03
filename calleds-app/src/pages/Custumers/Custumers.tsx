@@ -4,10 +4,12 @@ import { db } from "../../services/firebaseConnection"
 import NavBar from "../../components/Nav/NavBar"
 import Title from "../../components/Title/Title"
 
-import {BiUser} from 'react-icons/bi'
+import { IMaskInput } from "react-imask"
+import {FaUser, FaTrash, FaEdit} from 'react-icons/fa'
 import '../Profile/profile.css'
 
 import { collection, query, getDocs } from "firebase/firestore"
+
 export default function Cusutumers() {
 
     const [nomeCliente, setNomeCliente] = useState<string>('')
@@ -15,7 +17,7 @@ export default function Cusutumers() {
     const [emailCliente, setEmailCliente] = useState<string>('')
     const [clientes, setClientes] = useState<any[]>([])
 
-    const { addCliente, user }: any = useContext(AuthContext)
+    const { addCliente, user, deleteCliente }: any = useContext(AuthContext)
 
     async function handleAdd(e: any) {
         e.preventDefault();
@@ -23,20 +25,23 @@ export default function Cusutumers() {
             alert('Preencha os dados corretamente!')
         } else {
             addCliente(nomeCliente, numberCliente, emailCliente)
+            setNomeCliente('')
+            setEmailCliente('')
+            setNumberCliente([])
         }
+    }
+    async function deleteCustumer(id:any) {
+        deleteCliente(id)
     }
 
     useEffect(() => {
         async function loadClientes() {
             const clientesRef = collection(db, 'users', user.uid, 'clientes')
-
             const q = query(clientesRef);
-
             const querySnapshot = await getDocs(q);
+            let lists: any = []
 
-            let lists:any = []
-
-            querySnapshot.forEach((doc:any) => {
+            querySnapshot.forEach((doc: any) => {
                 lists.push({
                     id: doc.id,
                     nomeCliente: doc.data().NomeCliente,
@@ -47,7 +52,7 @@ export default function Cusutumers() {
             setClientes(lists);
         }
         loadClientes();
-    }, [])
+    })
 
 
     return (
@@ -62,7 +67,7 @@ export default function Cusutumers() {
                             <label>Nome:</label>
                             <input type="text" placeholder="Digite o nome" onChange={(e) => setNomeCliente(e.target.value)} />
                             <label>Telefone:</label>
-                            <input type="number" placeholder="(xx) xxxxx-xxxx" onChange={(e: any) => setNumberCliente(e.target.value)} />
+                            <IMaskInput type="number" mask="(99) 9 9999-9999" placeholder="(xx) x xxxx-xxxx" onChange={(e: any) => setNumberCliente(e.target.value)} />
                             <label> Email:</label>
                             <input type="email" placeholder="Digite o email" onChange={(e) => setEmailCliente(e.target.value)} />
                             <button type="submit">Cadastrar</button>
@@ -71,15 +76,24 @@ export default function Cusutumers() {
 
                 </div>
             </div>
-            {clientes.map((item:any) => {
-                return(
-                    <article className="article_clients" key={item.id}>
-                        <span><BiUser size={75}/></span>
-                        <h1>Nome: {item.nomeCliente}</h1>
-                        <p>Email: {item.emailCliente}</p>
-                    </article>
-                )
-            })}
+            <div className="section_clients">
+                {clientes.map((item: any) => {
+                    return (
+                        <article className="article_clients" key={item.id}>
+                            <span><FaUser size={75} /></span>
+                            <h1>Nome: {item.nomeCliente}</h1>
+                            <p>Email: {item.emailCliente}</p>
+                            <div className="buttons_edit">
+                                <button><FaEdit fontSize={20} /></button>
+                                <button><FaTrash onClick={() => deleteCustumer(item.id)}/></button>
+                            </div>
+                        </article>
+                    )
+                })}
+
+            </div>
+
         </div>
     )
+
 }
