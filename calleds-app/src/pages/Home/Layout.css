@@ -2,3 +2,25 @@
     display: flex;
     background-color: #e1d7e1;
 }
+.content_layout{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content_layout button{
+    margin-right: 10px;
+    background-color: #04013b;
+    padding: 7px;
+    border-radius: 8px;
+    transition: .4s;
+    border: 1px solid #04013b;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.content_layout button:hover{
+    border-radius: 20px;
+    background-color: transparent;
+    color: #08018f;
+    border: 1px solid #08018f;
+}
