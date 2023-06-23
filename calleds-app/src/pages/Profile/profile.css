@@ -61,7 +61,7 @@
     width: 200px;
     padding: 5px;
     text-align: center;
-    color: #000;
+    color: #000; 
     border-radius: 5px 5px 0 0;
 }
 .info_user input{
@@ -114,6 +114,17 @@
 .article_clients h1{
     color: #fff;
 }
+.container_service{
+    display: flex;
+    justify-content: center;
+    margin-left: 60vh;
+    background-color: #1f1f1f;
+    background-color: #f0e6f0;
+    border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .buttons_edit{
     display: flex;
     justify-content: center;
@@ -137,5 +148,9 @@
     }
     .info_user input{
         width: 250px;
+    }
+    .container_service{
+        margin: auto;
+        width: 300px;
     }
 }

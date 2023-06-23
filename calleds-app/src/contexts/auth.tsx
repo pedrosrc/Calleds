@@ -121,6 +121,24 @@ function AuthProvider({children}: any){
         localStorage.setItem('@dataCalled', JSON.stringify(data))
     }
 
+
+    //Adicionando Servico
+    async function addService(nomeCliente:string, typeService:string, stateService:string){
+        await addDoc(collection(db, 'users', user.uid, 'services'), {
+            NomeCliente: nomeCliente,
+            typeService: typeService,
+            stateService: stateService,
+        })
+        .then(()=>{
+            toast.success('Serviço Criado')
+            navigate('./home')
+        })
+        .catch((error)=>{
+            toast.error('Algo deu errado!')
+            console.log(error)
+        })
+    }
+
     //LOGOUT DE USER
     async function logout() {
         await signOut(auth);
@@ -138,6 +156,7 @@ function AuthProvider({children}: any){
             setUser,
             addCliente,
             deleteCliente,
+            addService,
             loadingAuth,
             loading}}>
             {children}

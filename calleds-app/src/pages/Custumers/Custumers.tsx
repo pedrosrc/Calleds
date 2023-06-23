@@ -4,7 +4,7 @@ import { db } from "../../services/firebaseConnection"
 import NavBar from "../../components/Nav/NavBar"
 import Title from "../../components/Title/Title"
 
-
+ 
 import {FaUser, FaTrash, FaEdit} from 'react-icons/fa'
 import '../Profile/profile.css'
 
