@@ -24,3 +24,37 @@
     color: #08018f;
     border: 1px solid #08018f;
 }
+.container_home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.section_services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+.table_services{
+    padding: 20px;
+    width: 800px;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    width: 800px;
+    background-color: #04013b;
+    padding: 10px;
+}
+.table_services thead tr th{
+    padding: 10px;
+}
+.table_services tbody{
+    background-color: white;
+}
+.table_services tbody th{
+    color: #000;
+    padding: 10px;
+}
+.table_services tbody th button{
+    background-color:#04013b;
+    border-radius: 50%;
+}
