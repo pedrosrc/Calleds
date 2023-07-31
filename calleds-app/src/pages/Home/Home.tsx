@@ -5,7 +5,7 @@ import { db } from "../../services/firebaseConnection"
 import NavBar from "../../components/Nav/NavBar";
 import Title from "../../components/Title/Title";
 
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { IoMdOptions } from 'react-icons/io'
 import './Layout.css'
 
@@ -30,13 +30,14 @@ export default function Home() {
                     nomeCliente: doc.data().NomeCliente,
                     typeService: doc.data().typeService,
                     stateService: doc.data().stateService,
-
                 })
             });
             setServices(lists);
         }
         loadServices();
     }, [])
+
+    
 
     return (
         <div className="container_layout">
@@ -71,17 +72,15 @@ export default function Home() {
                                             {service.stateService}
                                         </th>
                                         <th>
-                                            <button>
+                                            <Link to ={`/editar/${service.id}`}>
                                                 <IoMdOptions size={24} />
-                                            </button>
+                                            </Link>
                                         </th>
                                     </tr>
                                 </tbody>
-                            
                         )
                     })}
                     </table>
-
                 </div>
             </div>
         </div>

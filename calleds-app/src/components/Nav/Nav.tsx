@@ -6,6 +6,8 @@ import Privade from "../Privade/Privade"
 import Profile from "../../pages/Profile/Profile"
 import Cusutumers from "../../pages/Custumers/Custumers"
 import NewService from "../../pages/NewService"
+import EditCustumer from "../../pages/EditCustumer"
+
 import NotFound from "../../pages/NotFound"
 
 export default function Nav() {
@@ -17,7 +19,8 @@ export default function Nav() {
             <Route path="/clientes" element={  <Privade> <Cusutumers/>  </Privade> }/>
             <Route path="/perfil" element={ <Privade> <Profile/> </Privade> } />
             <Route path="/novo-serviço" element={ <Privade> <NewService/> </Privade> }/>
-            
+            <Route path="/editar/:service" element={ <Privade> <EditCustumer/> </Privade> }/>
+
             <Route path="*" element={<NotFound/>} />
         </Routes>               
    

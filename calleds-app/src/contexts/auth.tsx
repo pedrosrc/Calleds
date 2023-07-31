@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 import { auth, db } from "../services/firebaseConnection";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getDoc, setDoc, doc, addDoc, collection, deleteDoc } from "firebase/firestore";
+import { getDoc, setDoc, doc, addDoc, collection, deleteDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'
 
@@ -10,6 +10,7 @@ export const AuthContext = createContext({});
 function AuthProvider({children}: any){
 
     const [user, setUser] = useState<any>(null)
+    const [service, setService] = useState<any>(null)
     const [loadingAuth, setLoadingAuth] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
    
@@ -138,6 +139,23 @@ function AuthProvider({children}: any){
             console.log(error)
         })
     }
+    // Editando Service
+    async function editService(nomeCliente:string, typeService:string, stateService:string, id: any) {
+        const serviceRef = doc(db, 'users', user.uid, 'services', service.uid)
+        await updateDoc(serviceRef, {
+            NomeCliente: nomeCliente,
+            typeService: typeService,
+            stateService: stateService,
+        })
+        .then(()=>{
+            toast.success('Serviço Editado')
+            navigate('./home')
+        })
+        .catch((error)=>{
+            toast.error('Algo deu errado!')
+            console.log(error)
+        })
+    }
 
     //LOGOUT DE USER
     async function logout() {
@@ -154,6 +172,7 @@ function AuthProvider({children}: any){
             logout,
             storageUser,
             setUser,
+            editService,
             addCliente,
             deleteCliente,
             addService,
